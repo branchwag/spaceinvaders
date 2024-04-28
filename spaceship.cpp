@@ -16,8 +16,14 @@ void Spaceship::Draw() {
 
 void Spaceship::MoveLeft(){
     position.x  -=7;
+    if(position.x < 0){
+        position.x =0;
+    }
 }
 
 void Spaceship::MoveRight(){
     position.x +=7;
+    if(position.x > GetScreenWidth() - image.width){
+        position.x = GetScreenWidth() - image.width;
+    }
 }
