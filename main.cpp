@@ -2,7 +2,7 @@
 #include <raylib.h>
 //#include "spaceship.hpp"
 #include "game.hpp"
-#include "laser.hpp"
+// #include "laser.hpp"
 
 using namespace std;
 
@@ -16,18 +16,19 @@ int main () {
 
     //Spaceship spaceship;
     Game game;
-    Laser laser = Laser({100, 100}, -7);
+    //Laser laser = Laser({100, 100}, -7);
 
     while(WindowShouldClose() == false) {
 
         game.HandleInput();
-        laser.Update();
+        //laser.Update();
+        game.Update();
 
         BeginDrawing();
         ClearBackground(grey);
         //spaceship.Draw();
         game.Draw();
-        laser.Draw();
+        //laser.Draw();
         EndDrawing();
     }
 
