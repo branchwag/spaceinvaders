@@ -16,11 +16,12 @@ int main () {
 
     //Spaceship spaceship;
     Game game;
-    Laser laser = Laser({100, 100}, 7);
+    Laser laser = Laser({100, 100}, -7);
 
     while(WindowShouldClose() == false) {
 
         game.HandleInput();
+        laser.Update();
 
         BeginDrawing();
         ClearBackground(grey);
