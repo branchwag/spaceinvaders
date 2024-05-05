@@ -17,7 +17,7 @@ void Laser::Update(){
     if(active) {
         if(position.y > GetScreenHeight() || position.y < 0) {
             active = false;
-            std::cout << "Laser Inactive" << std::endl;
+            //std::cout << "Laser Inactive" << std::endl;
         }
     }
 
