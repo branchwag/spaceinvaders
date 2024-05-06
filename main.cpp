@@ -3,6 +3,7 @@
 //#include "spaceship.hpp"
 #include "game.hpp"
 // #include "laser.hpp"
+#include "obstacle.hpp"
 
 using namespace std;
 
@@ -16,6 +17,7 @@ int main () {
 
     //Spaceship spaceship;
     Game game;
+    Obstacle obstacle = Obstacle({100, 100});
     //Laser laser = Laser({100, 100}, -7);
 
     while(WindowShouldClose() == false) {
@@ -28,6 +30,7 @@ int main () {
         ClearBackground(grey);
         //spaceship.Draw();
         game.Draw();
+        obstacle.Draw();
         //laser.Draw();
         EndDrawing();
     }
