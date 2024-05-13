@@ -5,6 +5,7 @@ Game::Game() {
     obstacles = CreateObstacles();
     aliens = CreateAliens();
     aliensDirection = 1;
+    timeLastAlienFired = 0;
 }
 
 Game::~Game() {
@@ -119,7 +120,11 @@ void Game::MoveDownAliens(int distance){
 }
 
 void Game::AlienShootLaser(){
+    double currentTime = GetTime();
+    if(currentTime - timeLastAlienFired >= alienLaserShootInterval && !aliens.empty()) {
     int randomIndex = GetRandomValue(0, aliens.size() -1);
     Alien& alien = aliens[randomIndex];
     alienLasers.push_back(Laser({alien.position.x + alien.alienImages[alien.type -1].width/2, alien.position.y + alien.alienImages[alien.type -1].height}, 6));
+    timeLastAlienFired = GetTime();
+    }
 }
