@@ -27,4 +27,6 @@ class Game {
         constexpr static float alienLaserShootInterval = 0.35;
         float timeLastAlienFired;
         MysteryShip mysteryship;
+        float mysteryShipSpawnInterval;
+        float timeLastSpawn;
 };
