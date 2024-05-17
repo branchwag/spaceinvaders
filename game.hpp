@@ -22,6 +22,8 @@ class Game {
         void AlienShootLaser();
         void CheckForCollisions();
         void GameOver();
+        void Reset();
+        void InitGame();
         Spaceship spaceship;
         std::vector<Obstacle> obstacles;
         std::vector<Alien> aliens;

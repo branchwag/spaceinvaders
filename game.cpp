@@ -2,14 +2,7 @@
 #include <iostream>
 
 Game::Game() {
-    obstacles = CreateObstacles();
-    aliens = CreateAliens();
-    aliensDirection = 1;
-    timeLastAlienFired = 0;
-    timeLastSpawn = 0.0;
-    lives = 3;
-    run = true;
-    mysteryShipSpawnInterval = GetRandomValue(10, 20);
+    InitGame();
 }
 
 Game::~Game() {
@@ -39,6 +32,11 @@ void Game::Update(){
         DeleteInactiveLasers();
         mysteryship.Update();
         CheckForCollisions();
+    } else {
+        if(IsKeyDown(KEY_ENTER)) {
+            Reset();
+            InitGame();
+        }
     }
 }
 
@@ -235,4 +233,24 @@ void Game::GameOver()
 {
     // std::cout << "Game Over" << std::endl;
     run = false;
+}
+
+void Game::InitGame()
+{
+    obstacles = CreateObstacles();
+    aliens = CreateAliens();
+    aliensDirection = 1;
+    timeLastAlienFired = 0;
+    timeLastSpawn = 0.0;
+    lives = 3;
+    run = true;
+    mysteryShipSpawnInterval = GetRandomValue(10, 20);
+}
+
+void Game::Reset()
+{
+    spaceship.Reset();
+    aliens.clear();
+    alienLasers.clear();
+    obstacles.clear();
 }
