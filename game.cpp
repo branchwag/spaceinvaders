@@ -1,5 +1,6 @@
 #include "game.hpp"
 #include <iostream>
+#include <fstream>
 
 Game::Game() {
     InitGame();
@@ -255,7 +256,7 @@ void Game::InitGame()
     timeLastSpawn = 0.0;
     lives = 3;
     score = 0;
-    highscore = 0;
+    highscore = loadHighscoreFromFile();
     run = true;
     mysteryShipSpawnInterval = GetRandomValue(10, 20);
 }
@@ -264,7 +265,31 @@ void Game::checkForHighscore()
 {
     if(score > highscore){
         highscore = score;
+        saveHighscoreToFile(highscore);
     }
+}
+
+void Game::saveHighscoreToFile(int highscore)
+{
+    std::ofstream highscoreFile("highscore.txt");
+    if(highscoreFile.is_open()){
+        highscoreFile << highscore;
+        highscoreFile.close();
+    } else {
+        std::cerr << "Failed to save highscore to file" << std::endl;
+    }
+}
+
+int Game::loadHighscoreFromFile() {
+    int loadedHighscore = 0;
+    std::ifstream highscoreFile("highscore.txt");
+    if(highscoreFile.is_open()){
+        highscoreFile >> loadedHighscore;
+        highscoreFile.close();
+    } else {
+        std::cerr << "Failed to load highscore from file" << std::endl;
+    }
+    return loadedHighscore;
 }
 
 void Game::Reset()
