@@ -12,6 +12,7 @@ int main () {
     int windowHeight = 700;
 
     InitWindow(windowWidth + offset, windowHeight + 2 * offset, "C++ Space Invaders");
+    Font font = LoadFontEx("Font/monogram.ttf", 64, 0, 0);
     SetTargetFPS(60);
 
     Game game;
@@ -25,6 +26,7 @@ int main () {
         ClearBackground(grey);
         DrawRectangleRoundedLines({10, 10, 780, 780}, 0.18f, 20, 2, yellow);
         DrawLineEx({25, 730}, {775, 730}, 3, yellow);
+        DrawTextEx(font, "LEVEL 01", {570, 740}, 34, 2, yellow);
         game.Draw();
         EndDrawing();
     }
