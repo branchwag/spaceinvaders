@@ -178,5 +178,29 @@ void Game::CheckForCollisions()
                 }
             }
         }
+
+        if(CheckCollisionRecs(mysteryship.getRect(), laser.getRect())) {
+            mysteryship.alive = false;
+            laser.active = false;
+        }
+    }
+
+    for(auto& laser: alienLasers){
+        if(CheckCollisionRecs(laser.getRect(), spaceship.getRect())){
+            laser.active = false;
+            std::cout << "Spaceship Hit" << std::endl;
+        }
+
+            for (auto& obstacle: obstacles){
+            auto it = obstacle.blocks.begin();
+            while(it != obstacle.blocks.end()){
+                if(CheckCollisionRecs(it -> getRect(), laser.getRect())){
+                    it = obstacle.blocks.erase(it);
+                    laser.active = false;
+                } else {
+                    ++it;
+                }
+            }
+        }
     }
 }
