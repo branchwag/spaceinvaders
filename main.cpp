@@ -50,6 +50,10 @@ int main () {
         std::string scoreText= FormatWithLeadingZeros(game.score, 5);
         DrawTextEx(font, scoreText.c_str(), {50, 40}, 34, 2, yellow);
 
+        DrawTextEx(font, "HIGH-SCORE", {570, 15}, 34, 2, yellow);
+        std::string highscoreText = FormatWithLeadingZeros(game.highscore, 5);
+        DrawTextEx(font, highscoreText.c_str(), {655, 40}, 34, 2, yellow);
+
         game.Draw();
         EndDrawing();
     }
