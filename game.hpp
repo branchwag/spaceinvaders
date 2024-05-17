@@ -14,6 +14,7 @@ class Game {
         void HandleInput();
         bool run;
         int lives;
+        int score;
     private:
         void DeleteInactiveLasers();
         std::vector<Obstacle> CreateObstacles();
